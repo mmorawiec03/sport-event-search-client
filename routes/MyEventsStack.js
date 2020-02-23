@@ -4,7 +4,12 @@ import MyEvents from '../screens/MyEvents';
 
 const MyEventsStack = createStackNavigator({
     MyEvents: {
-        screen: MyEvents
+        screen: MyEvents,
+        navigationOptions: {
+            title: 'My events',
+            headerStyle: { backgroundColor: 'lightgrey' },
+            headerTitleAlign: 'center'
+        }
     }
 });
 

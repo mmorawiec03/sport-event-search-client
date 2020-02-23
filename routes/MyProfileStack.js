@@ -4,7 +4,12 @@ import MyProfile from '../screens/MyProfile';
 
 const MyProfileStack = createStackNavigator({
     MyProfile: {
-        screen: MyProfile
+        screen: MyProfile,
+        navigationOptions: {
+            title: 'My profile',
+            headerStyle: { backgroundColor: 'lightgrey' },
+            headerTitleAlign: 'center'
+        }
     }
 });
 

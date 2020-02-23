@@ -8,16 +8,28 @@ import MyProfileStack from './MyProfileStack'
 
 const Drawer = createDrawerNavigator({
     AllEvents: {
-        screen: AllEventsStack
+        screen: AllEventsStack,
+        navigationOptions: {
+            title: 'All events'
+        }
     },
     MyEvents: {
-        screen: MyEventsStack
+        screen: MyEventsStack,
+        navigationOptions: {
+            title: 'My events'
+        }
     },
     MyProfile: {
-        screen: MyProfileStack
+        screen: MyProfileStack,
+        navigationOptions: {
+            title: 'My profile'
+        }
     },
     About: {
-        screen: AboutStack
+        screen: AboutStack,
+        navigationOptions: {
+            title: 'About'
+        }
     }
 });
 

@@ -4,7 +4,12 @@ import About from '../screens/About';
 
 const AboutStack = createStackNavigator({
     About: {
-        screen: About
+        screen: About,
+        navigationOptions: {
+            title: 'About',
+            headerStyle: { backgroundColor: 'lightgrey' },
+            headerTitleAlign: 'center'
+        }
     }
 });
 

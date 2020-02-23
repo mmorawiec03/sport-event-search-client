@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { globalStyles } from '../styles/Global';
+import { globalStyles } from '../styles/GlobalStyles';
 
 export default function MyEvents() {
     return (
