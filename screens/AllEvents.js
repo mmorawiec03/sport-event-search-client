@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { View, FlatList, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 import EventCard from '../shared/EventCard';
+
 
 export default function AllEvents({ navigation }) {
   const [events, setEvents] = useState([

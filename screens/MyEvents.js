@@ -7,5 +7,5 @@ export default function MyEvents() {
         <View style={globalStyles.container}>
             <Text>My events!</Text>
         </View>
-    )
+    );
 }

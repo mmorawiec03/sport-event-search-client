@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
-import { images } from '../styles/GlobalStyles';
+import { globalStyles, levelImages } from '../styles/GlobalStyles';
 import Card from './Card'
 
 
@@ -11,26 +11,25 @@ export default function EventCard({ event }) {
                 <Text style={styles.nameText}>{event.name}</Text>
             </View>
             <View style={styles.level}>
-                <Image source={images.levels[event.level]} />
+                <Image source={levelImages.levels[event.level]} />
             </View>
-            <View style={styles.info}>
-                <View style={styles.date}>
+            <View style={globalStyles.row}>
+                <View style={globalStyles.column1of3}>
                     <Text>{event.date}</Text>
                 </View>
-                <View style={styles.hour}>
+                <View style={globalStyles.column1of3}>
                     <Text>{event.hour}</Text>
                 </View>
-                <View style={styles.address}>
+                <View style={globalStyles.column1of3}>
                     <Text>{event.address}</Text>
                 </View>
             </View>
         </Card>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     name: {
-        flex: 1,
         alignItems: 'center',
         marginBottom: 5
     },
@@ -41,22 +40,5 @@ const styles = StyleSheet.create({
     level: {
         height: 20,
         marginBottom: 5
-    },
-    info: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    date: {
-        flex: 0.33,
-        alignItems: 'center'
-    },
-    hour: {
-        flex: 0.33,
-        alignItems: 'center'
-    },
-    address: {
-        flex: 0.33,
-        alignItems: 'center'
     }
-})
+});

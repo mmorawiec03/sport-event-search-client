@@ -2,8 +2,8 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import AllEventsStack from './AllEventsStack';
 import AboutStack from './AboutStack';
-import MyEventsStack from './MyEventsStack'
-import MyProfileStack from './MyProfileStack'
+import MyEventsStack from './MyEventsStack';
+import MyProfileStack from './MyProfileStack';
 
 
 const Drawer = createDrawerNavigator({
