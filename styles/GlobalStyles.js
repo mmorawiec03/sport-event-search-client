@@ -17,6 +17,11 @@ export const globalStyles = StyleSheet.create({
     column1of3: {
         flex: 0.33,
         alignItems: 'center'
+    },
+    centerContext: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
