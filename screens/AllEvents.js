@@ -7,25 +7,36 @@ import EventCard from '../shared/EventCard';
 export default function AllEvents({ navigation }) {
   
   const [events, setEvents] = useState('');
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const getEventsFromApi = () => {
+  useEffect(() => {
+    getEventsFromServer();
+  }, [refreshing]);
+
+  const handleRefresh = () => {
+    setRefreshing(true);
+  }
+
+  const getEventsFromServer = () => {
     return fetch('http://192.168.0.227:3000/api/events')
       .then((response) => response.json())
       .then((responseJson) => {
         setEvents(responseJson);
-        setIsLoaded(true);
+        setLoading(false);
+        setRefreshing(false);
       })
       .catch((error) => {
-        console.error(error);
+        setLoading(false);
+        setRefreshing(false);
       });
   }
 
-  useEffect(() => {
-    getEventsFromApi();
-  });
-
-  const eventsList = isLoaded ? (
+  const eventsList = loading ? (
+    <View style={globalStyles.centerContext}>
+      <ActivityIndicator />
+    </View>
+  ) : (
     <FlatList
       data={events}
       renderItem={({ item }) => (
@@ -33,11 +44,10 @@ export default function AllEvents({ navigation }) {
           <EventCard event={item} />
         </TouchableOpacity>
       )}
+      keyExtractor={(item) => item._id}
+      refreshing={refreshing}
+      onRefresh={handleRefresh}
     />
-  ) : (
-    <View style={globalStyles.centerContext}>
-      <ActivityIndicator />
-    </View>
   );
 
   return (
