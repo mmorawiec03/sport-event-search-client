@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 import { levelImages } from '../styles/LevelImages';
-import Card from './Card'
+import Card from '../shared/Card'
 
 
 export default function EventCard({ event }) {

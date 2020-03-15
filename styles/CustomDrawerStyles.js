@@ -5,7 +5,7 @@ export const customDrawerStyles = StyleSheet.create({
     drawer: {
         flex: 1
     },
-    iconView: {
+    iconContainer: {
         marginTop: 30,
         justifyContent: 'center',
         alignItems: 'center'
@@ -15,7 +15,7 @@ export const customDrawerStyles = StyleSheet.create({
         width: 120,
         height: 120
     },
-    titleView: {
+    titleContainer: {
         margin: 10,
         justifyContent: 'center',
         alignItems: 'center'
@@ -23,5 +23,17 @@ export const customDrawerStyles = StyleSheet.create({
     drawerTitle: {
         fontSize: 18,
         fontWeight: 'bold'
+    },
+    logoutButton: {
+        backgroundColor: '#b5eba0',
+        height: 40,
+        margin: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    logoutText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'dimgrey'
     }
 });
