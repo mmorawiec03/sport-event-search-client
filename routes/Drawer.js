@@ -1,5 +1,6 @@
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
+import CustomDrawer from '../shared/CustomDrawer';
 import AllEventsStack from './AllEventsStack';
 import AboutStack from './AboutStack';
 import MyEventsStack from './MyEventsStack';
@@ -10,19 +11,19 @@ const Drawer = createDrawerNavigator({
     AllEvents: {
         screen: AllEventsStack,
         navigationOptions: {
-            title: 'All events'
+            title: 'All Events'
         }
     },
     MyEvents: {
         screen: MyEventsStack,
         navigationOptions: {
-            title: 'My events'
+            title: 'My Events'
         }
     },
     MyProfile: {
         screen: MyProfileStack,
         navigationOptions: {
-            title: 'My profile'
+            title: 'My Profile'
         }
     },
     About: {
@@ -31,6 +32,8 @@ const Drawer = createDrawerNavigator({
             title: 'About'
         }
     }
+}, {
+    contentComponent: CustomDrawer
 });
 
 export default createAppContainer(Drawer);

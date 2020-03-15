@@ -1,14 +1,17 @@
+import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
+import Header from '../shared/Header';
 import MyEvents from '../screens/MyEvents';
 
 
 const MyEventsStack = createStackNavigator({
     MyEvents: {
         screen: MyEvents,
-        navigationOptions: {
-            title: 'My events',
-            headerStyle: { backgroundColor: 'lightgrey' },
-            headerTitleAlign: 'center'
+        navigationOptions: ({ navigation }) => {
+            return {
+                headerTitle: () => <Header navigation={navigation} title='My Events' />,
+                headerTitleAlign: 'center'
+            }
         }
     }
 });

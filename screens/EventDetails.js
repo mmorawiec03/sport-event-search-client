@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
-import { globalStyles, levelImages } from '../styles/GlobalStyles';
+import { globalStyles } from '../styles/GlobalStyles';
+import { levelImages } from '../styles/LevelImages';
 import Card from '../shared/Card';
 
 

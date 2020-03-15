@@ -19,7 +19,7 @@ export default function AllEvents({ navigation }) {
   }
 
   const getEventsFromServer = () => {
-    return fetch('http://192.168.0.227:3000/api/events')
+    return fetch('http://192.168.0.102:3000/api/events')
       .then((response) => response.json())
       .then((responseJson) => {
         setEvents(responseJson);
@@ -34,7 +34,7 @@ export default function AllEvents({ navigation }) {
 
   const eventsList = loading ? (
     <View style={globalStyles.centerContext}>
-      <ActivityIndicator />
+      <ActivityIndicator size="large" color='black' />
     </View>
   ) : (
     <FlatList
