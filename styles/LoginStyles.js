@@ -14,9 +14,11 @@ export const loginStyles = StyleSheet.create({
         alignItems: 'center'
     },
     icon: {
+        flex: 1,
         resizeMode:'contain',
-        height: 120,
-        width: 120
+        maxHeight: 150,
+        maxWidth: 150,
+        marginTop: 30
     },
     title: {
         fontSize: 20,
@@ -28,20 +30,20 @@ export const loginStyles = StyleSheet.create({
     },
     input: {
         backgroundColor: '#c8e0bd',
-        height: 40,
+        height: 50,
         marginBottom: 15,
         paddingHorizontal: 10,
-        fontSize: 16,
+        fontSize: 18,
         color: 'dimgrey'
     },
     buttonContainer: {
         backgroundColor: '#9ec58c',
-        height: 40,
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center'
     },
     buttonText: {
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
         color: 'dimgrey'
     }

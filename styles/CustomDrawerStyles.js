@@ -26,7 +26,7 @@ export const customDrawerStyles = StyleSheet.create({
     },
     logoutButton: {
         backgroundColor: '#b5eba0',
-        height: 40,
+        height: 50,
         margin: 10,
         justifyContent: 'center',
         alignItems: 'center'
