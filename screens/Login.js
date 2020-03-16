@@ -1,11 +1,22 @@
-import React from 'react';
-import { View, Text, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, KeyboardAvoidingView, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import LoginForm from '../components/LoginForm';
+import RegisterForm from '../components/RegisterForm';
 import { loginStyles } from '../styles/LoginStyles';
 
 
 export default function Login({ login }) {
-    return (
+    const [register, setRegister] = useState(false);
+    
+    const handlePress = () => {
+        setRegister(!register);
+    }
+    
+    const form = register ? (
+        <KeyboardAvoidingView behavior='padding' style={loginStyles.container} contentContainerStyle={{backgroundColor: 'red'}}>
+            <RegisterForm />
+        </KeyboardAvoidingView>
+    ) : (
         <KeyboardAvoidingView behavior='padding' style={loginStyles.container} contentContainerStyle={{backgroundColor: 'red'}}>
             <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss()}}>
                 <View style={loginStyles.iconContainer}>
@@ -14,6 +25,15 @@ export default function Login({ login }) {
                 </View>
             </TouchableWithoutFeedback>
             <LoginForm login={login} />
-        </KeyboardAvoidingView>
+        </KeyboardAvoidingView> 
+    );
+
+    return (
+        <View style={loginStyles.container}>
+            {form}
+            <TouchableOpacity style={loginStyles.buttonContainer} onPress={handlePress}>
+                <Text style={loginStyles.buttonText}>{register ? ('Login page') : ('Sign up')}</Text>
+            </TouchableOpacity>
+        </View>
     )
 }

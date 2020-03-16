@@ -5,7 +5,7 @@ export const loginStyles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        //backgroundColor: '#b5eba0'
+        justifyContent: 'center',
         backgroundColor: '#e2eddd'
     },
     iconContainer: {
