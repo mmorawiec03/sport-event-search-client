@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { DrawerItems } from 'react-navigation-drawer';
 import { customDrawerStyles } from '../styles/CustomDrawerStyles';
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function CustomDrawer(props) {
+    const { dispatch } = useContext(AuthContext);
     const handlePress = () => {
-        console.log('logout');
+        dispatch({type: 'LOGOUT'});
     }
     return (
         <SafeAreaView style={customDrawerStyles.drawer}>

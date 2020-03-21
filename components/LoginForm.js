@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { loginStyles } from '../styles/LoginStyles';
+import { AuthContext } from '../contexts/AuthContext';
 
-
-export default function LoginForm({ login }) {
+export default function LoginForm() {
+    const { dispatch } = useContext(AuthContext);
     const handlePress = () => {
-        login(true);
+        dispatch({type: 'LOGIN'});
     }
     return (
         <View style={loginStyles.formContainer}>

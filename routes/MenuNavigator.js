@@ -8,7 +8,7 @@ import MyEventsStack from './MyEventsStack';
 import MyProfileStack from './MyProfileStack';
 
 
-const Drawer = createDrawerNavigator({
+const MenuNavigator = createDrawerNavigator({
     AllEvents: {
         screen: AllEventsStack,
         navigationOptions: {
@@ -37,4 +37,4 @@ const Drawer = createDrawerNavigator({
     contentComponent: CustomDrawer
 });
 
-export default createAppContainer(Drawer);
+export default createAppContainer(MenuNavigator);

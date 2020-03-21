@@ -11,16 +11,17 @@ export default function RegisterForm({ login }) {
         <View style={loginStyles.formContainer}>
             <TextInput 
                 style={loginStyles.input}
-                placeholder='first name'
-            />
-            <TextInput 
-                style={loginStyles.input}
-                placeholder='last name'
+                placeholder='full name'
             />
             <TextInput 
                 style={loginStyles.input}
                 placeholder='email'
                 keyboardType='email-address'
+            />
+            <TextInput 
+                style={loginStyles.input}
+                placeholder='phone number'
+                keyboardType='number-pad'
             />
             <TextInput 
                 style={loginStyles.input}

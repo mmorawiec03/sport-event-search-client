@@ -5,7 +5,7 @@ import RegisterForm from '../components/RegisterForm';
 import { loginStyles } from '../styles/LoginStyles';
 
 
-export default function Login({ login }) {
+export default function Login() {
     const [register, setRegister] = useState(false);
     
     const handlePress = () => {
@@ -24,7 +24,7 @@ export default function Login({ login }) {
                     <Text style={loginStyles.title}>Sport Event Search</Text>
                 </View>
             </TouchableWithoutFeedback>
-            <LoginForm login={login} />
+            <LoginForm />
         </KeyboardAvoidingView> 
     );
 
