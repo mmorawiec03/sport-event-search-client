@@ -18,22 +18,22 @@ export default function Login() {
         </KeyboardAvoidingView>
     ) : (
         <KeyboardAvoidingView behavior='padding' style={loginStyles.container} contentContainerStyle={{backgroundColor: 'red'}}>
-            <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss()}}>
-                <View style={loginStyles.iconContainer}>
-                    <Image source={require('../assets/app-icon.png')} style={loginStyles.icon} />
-                    <Text style={loginStyles.title}>Sport Event Search</Text>
-                </View>
-            </TouchableWithoutFeedback>
+            <View style={loginStyles.iconContainer}>
+                <Image source={require('../assets/app-icon.png')} style={loginStyles.icon} />
+                <Text style={loginStyles.title}>Sport Event Search</Text>
+            </View>
             <LoginForm />
         </KeyboardAvoidingView> 
     );
 
     return (
-        <View style={loginStyles.container}>
-            {form}
-            <TouchableOpacity style={loginStyles.buttonContainer} onPress={handlePress}>
-                <Text style={loginStyles.buttonText}>{register ? ('Login page') : ('Sign up')}</Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={loginStyles.container}>
+                {form}
+                <TouchableOpacity style={loginStyles.buttonContainer} onPress={handlePress}>
+                    <Text style={loginStyles.buttonText}>{register ? ('Login page') : ('Sign up')}</Text>
+                </TouchableOpacity>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }

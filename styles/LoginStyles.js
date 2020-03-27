@@ -31,7 +31,6 @@ export const loginStyles = StyleSheet.create({
     input: {
         backgroundColor: '#c8e0bd',
         height: 50,
-        marginBottom: 15,
         paddingHorizontal: 10,
         fontSize: 18,
         color: 'dimgrey'
@@ -46,5 +45,11 @@ export const loginStyles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: 'dimgrey'
+    },
+    errorText: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: 'grey',
+        textAlign: 'center'
     }
 });
