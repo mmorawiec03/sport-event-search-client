@@ -1,8 +1,9 @@
-import React from 'react';
+import React,  { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { loginStyles } from '../styles/LoginStyles';
+import { register } from '../api/endpoints';
 
 
 const registerSchema = yup.object({
@@ -23,14 +24,39 @@ const registerSchema = yup.object({
 });
 
 export default function RegisterForm() {
+    const [showMessage, setShowMessage] = useState(false);
+    const [message, setMessage] = useState('');
+
+    const signUp = (newUserData) => {
+        register(newUserData).then(res => {
+            if (res.status === 200) {
+                setMessage(res.data.message);
+                setShowMessage(true);
+            }
+        }).catch(err => {
+            if (err.response) {
+                setMessage(err.response.data.message);
+            } else {
+                setMessage('Request failed.');
+            }
+            setShowMessage(true);
+        });
+    }
+
     return (
         <View style={loginStyles.formContainer}>
+            {showMessage && 
+                <TouchableOpacity onPress={() => {setShowMessage(false)}}>
+                    <View style={loginStyles.messageContainer}>
+                        <Text style={loginStyles.messageText}>{message}</Text>
+                    </View>
+                </TouchableOpacity>
+            }
             <Formik 
                 initialValues={{fullName: '', email: '', phoneNumber: '', password: ''}}
                 validationSchema={registerSchema}
                 onSubmit={(values, actions) => {
-                    console.log(values);
-                    // api.post(/register......)
+                    signUp(JSON.stringify(values));
                     actions.resetForm();
                     Keyboard.dismiss();
                 }}
@@ -40,6 +66,7 @@ export default function RegisterForm() {
                         <TextInput 
                             style={loginStyles.input}
                             placeholder='Full name'
+                            autoCapitalize = 'words'
                             onChangeText={formikProps.handleChange('fullName')}
                             onBlur={formikProps.handleBlur('fullName')}
                             value={formikProps.values.fullName}
@@ -50,6 +77,7 @@ export default function RegisterForm() {
                             style={loginStyles.input}
                             placeholder='Email'
                             keyboardType='email-address'
+                            autoCapitalize = 'none'
                             onChangeText={formikProps.handleChange('email')}
                             onBlur={formikProps.handleBlur('email')}
                             value={formikProps.values.email}
@@ -70,6 +98,7 @@ export default function RegisterForm() {
                             style={loginStyles.input}
                             placeholder='Password'
                             secureTextEntry
+                            autoCapitalize = 'none'
                             onChangeText={formikProps.handleChange('password')}
                             onBlur={formikProps.handleBlur('password')}
                             value={formikProps.values.password}

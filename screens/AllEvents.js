@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 import EventCard from '../components/EventCard';
+import { getEvents } from '../api/endpoints';
 
 
 export default function AllEvents({ navigation }) {
@@ -19,18 +20,16 @@ export default function AllEvents({ navigation }) {
   }
 
   const getEventsFromServer = () => {
-    return fetch('http://192.168.0.105:3000/api/events')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        setEvents(responseJson);
-        setLoading(false);
-        setRefreshing(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setRefreshing(false);
-      });
+    return getEvents().then(response => {
+      setEvents(response.data);
+      setLoading(false);
+      setRefreshing(false);
+    }).catch(error => {
+      setLoading(false);
+      setRefreshing(false);
+    });
   }
+
 
   const eventsList = loading ? (
     <View style={globalStyles.centerContext}>

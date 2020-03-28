@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button, ScrollView } from 'react-native';
+import { Text, View, Image, Button, ScrollView } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
+import { cardContentStyles } from '../styles/CardContentStyles';
 import { levelImages } from '../styles/LevelImages';
 import Card from '../shared/Card';
 
@@ -17,66 +18,46 @@ export default function EventDetails({ navigation }) {
     return (
         <View style={globalStyles.container}>
             <ScrollView>
-            <View style={styles.name}>
-                <Text style={styles.nameText}>{name}</Text>
+            <View style={cardContentStyles.center}>
+                <Text style={cardContentStyles.nameText}>{name}</Text>
             </View>
             <Card>
-                <Text style={styles.detailsText}>{description}</Text>
+                <Text style={cardContentStyles.detailsText}>{description}</Text>
             </Card>
             <Card>
                 <View style={globalStyles.row}>
                     <View style={globalStyles.column1of3}>
-                        <Text style={styles.labelText}>Date</Text>
-                        <Text style={styles.detailsText}>{date}</Text>
+                        <Text style={cardContentStyles.labelText}>Date</Text>
+                        <Text style={cardContentStyles.detailsText}>{date}</Text>
                     </View>
                     <View style={globalStyles.column1of3}>
-                        <Text style={styles.labelText}>Hour</Text>
-                        <Text style={styles.detailsText}>{hour}</Text>
+                        <Text style={cardContentStyles.labelText}>Hour</Text>
+                        <Text style={cardContentStyles.detailsText}>{hour}</Text>
                     </View>
                     <View style={globalStyles.column1of3}>
-                        <Text style={styles.labelText}>Address</Text>
-                        <Text style={styles.detailsText}>{address}</Text>
+                        <Text style={cardContentStyles.labelText}>Address</Text>
+                        <Text style={cardContentStyles.detailsText}>{address}</Text>
                     </View>
                 </View>
             </Card>
             <Card>
                 <View style={globalStyles.row}>
                     <View style={globalStyles.column1of2}>
-                        <Text style={styles.labelText}>Discipline</Text>
-                        <Text style={styles.detailsText}>{discipline}</Text>
+                        <Text style={cardContentStyles.labelText}>Discipline</Text>
+                        <Text style={cardContentStyles.detailsText}>{discipline}</Text>
                     </View>
                     <View  style={globalStyles.column1of2}>
-                        <Text style={styles.labelText}>Level</Text>
+                        <Text style={cardContentStyles.labelText}>Level</Text>
                         <Image source={levelImages.levels[level]} />
                     </View>
                 </View>
             </Card>
             <Card>
-                <Text style={styles.labelText}>Participants limit</Text>
-                <Text style={styles.detailsText}>{participantsLimit}</Text>
+                <Text style={cardContentStyles.labelText}>Participants limit</Text>
+                <Text style={cardContentStyles.detailsText}>{participantsLimit}</Text>
                 <Button title='Sign up' color='grey' />
             </Card>
             </ScrollView>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    name: {
-        alignItems: 'center',
-    },
-    nameText: {
-        fontWeight: 'bold',
-        fontSize: 25,
-        margin: 10
-    },
-    detailsText: {
-        fontSize: 16,
-        marginBottom: 8
-    },
-    labelText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 8
-    }
-});

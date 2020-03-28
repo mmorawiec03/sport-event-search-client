@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { loginStyles } from '../styles/LoginStyles';
 import { AuthContext } from '../contexts/AuthContext';
+import { login } from '../api/endpoints';
 
 const loginSchema = yup.object({
     email: yup
@@ -17,17 +18,39 @@ const loginSchema = yup.object({
 
 export default function LoginForm() {
     const { dispatch } = useContext(AuthContext);
+    const [showMessage, setShowMessage] = useState();
+    const [message, setMessage] = useState('');
+
+    const signIn = (email, password) => {
+        login(email, password).then(res => {
+            if (res.status === 200) {
+                dispatch({type: 'LOGIN', user: res.data});
+            }
+        }).catch(err => {
+            if (err.response) {
+                setMessage(err.response.data.message);
+            } else {
+                setMessage('Request failed.');
+            }
+            setShowMessage(true);
+        });
+    }
+
     return (
         <View style={loginStyles.formContainer}>
+            {showMessage && 
+                <TouchableOpacity onPress={() => {setShowMessage(false)}}>
+                    <View style={loginStyles.messageContainer}>
+                        <Text style={loginStyles.messageText}>{message}</Text>
+                    </View>
+                </TouchableOpacity>
+            }
             <Formik 
                 initialValues={{email: '', password: ''}}
                 validationSchema={loginSchema}
                 onSubmit={(values, actions) => {
-                    console.log(`logged as ${values.email}`);
-                    // api.post(/login......)
-                    actions.resetForm();
+                    signIn(values.email, values.password, actions);
                     Keyboard.dismiss();
-                    dispatch({type: 'LOGIN'});
                 }}
             >
                 {formikProps => (
@@ -36,6 +59,7 @@ export default function LoginForm() {
                             style={loginStyles.input}
                             placeholder='Email'
                             keyboardType='email-address'
+                            autoCapitalize = 'none'
                             onChangeText={formikProps.handleChange('email')}
                             onBlur={formikProps.handleBlur('email')}
                             value={formikProps.values.email}
@@ -46,6 +70,7 @@ export default function LoginForm() {
                             style={loginStyles.input}
                             placeholder='Password'
                             secureTextEntry
+                            autoCapitalize = 'none'
                             onChangeText={formikProps.handleChange('password')}
                             onBlur={formikProps.handleBlur('password')}
                             value={formikProps.values.password}
