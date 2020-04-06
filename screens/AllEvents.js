@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
-import EventCard from '../components/EventCard';
+import EventCard from '../shared/EventCard';
 import { getEvents } from '../api/endpoints';
 
 

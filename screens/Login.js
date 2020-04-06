@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, Image, KeyboardAvoidingView, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import LoginForm from '../components/LoginForm';
-import RegisterForm from '../components/RegisterForm';
+import LoginForm from '../forms/LoginForm';
+import RegisterForm from '../forms/RegisterForm';
+import { globalStyles } from '../styles/GlobalStyles';
 import { loginStyles } from '../styles/LoginStyles';
 
 
@@ -13,27 +14,31 @@ export default function Login() {
     }
     
     const form = register ? (
-        <KeyboardAvoidingView behavior='padding' style={loginStyles.container} contentContainerStyle={{backgroundColor: 'red'}}>
+        <KeyboardAvoidingView behavior='padding' style={loginStyles.container} >
             <RegisterForm />
+            <View style={loginStyles.formContainer}>
+                <TouchableOpacity style={globalStyles.buttonContainer} onPress={handlePress}>
+                    <Text style={globalStyles.buttonText}>LOGIN PAGE</Text>
+                </TouchableOpacity>
+            </View>
         </KeyboardAvoidingView>
     ) : (
-        <KeyboardAvoidingView behavior='padding' style={loginStyles.container} contentContainerStyle={{backgroundColor: 'red'}}>
+        <KeyboardAvoidingView behavior='padding' style={loginStyles.container} >
             <View style={loginStyles.iconContainer}>
-                <Image source={require('../assets/app-icon.png')} style={loginStyles.icon} />
-                <Text style={loginStyles.title}>Sport Event Search</Text>
+                <Image source={require('../assets/logo.png')} style={loginStyles.icon} />
             </View>
             <LoginForm />
+            <View style={loginStyles.formContainer}>
+                <TouchableOpacity style={globalStyles.buttonContainer} onPress={handlePress}>
+                    <Text style={globalStyles.buttonText}>SIGN UP</Text>
+                </TouchableOpacity>
+            </View>
         </KeyboardAvoidingView> 
     );
 
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={loginStyles.container}>
-                {form}
-                <TouchableOpacity style={loginStyles.buttonContainer} onPress={handlePress}>
-                    <Text style={loginStyles.buttonText}>{register ? ('Login page') : ('Sign up')}</Text>
-                </TouchableOpacity>
-            </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={loginStyles.container} >
+            {form}           
         </TouchableWithoutFeedback>
     )
 }

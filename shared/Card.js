@@ -12,11 +12,12 @@ export default function Card(props) {
 
 const styles = StyleSheet.create({
     card: {
-        borderRadius: 5,
-        elevation: 5,
-        backgroundColor: 'white',
-        margin: 8,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'rgba(94, 94, 94, 0.2)',
+        margin: 5,
         padding: 20,
-        alignItems: 'center'
+        borderRadius: 15,
     }
 });

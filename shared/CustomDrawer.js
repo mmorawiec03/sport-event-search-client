@@ -1,31 +1,22 @@
-import React, { useContext } from 'react';
-import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native';
 import { DrawerItems } from 'react-navigation-drawer';
 import { customDrawerStyles } from '../styles/CustomDrawerStyles';
-import { AuthContext } from '../contexts/AuthContext';
 
 export default function CustomDrawer(props) {
-    const { dispatch } = useContext(AuthContext);
-    const handlePress = () => {
-        dispatch({type: 'LOGOUT'});
-    }
     return (
-        <SafeAreaView style={customDrawerStyles.drawer}>
+        <SafeAreaView style={customDrawerStyles.container}>
             <View style={customDrawerStyles.iconContainer}>
-                <Image source={require('../assets/app-icon.png')} style={customDrawerStyles.drawerIcon} />
-            </View>
-            <View style={customDrawerStyles.titleContainer}>
-                <Text style={customDrawerStyles.drawerTitle}>Sport Event Search</Text>
+                <Image source={require('../assets/logo.png')} style={customDrawerStyles.drawerIcon} />
             </View>
             <ScrollView>
                 <DrawerItems 
-                    activeTintColor={'darkgreen'}
+                    activeTintColor={'#208484'}
+                    activeBackgroundColor={'rgba(94, 94, 94, 0.2)'}
+                    inactiveTintColor={'white'}
                     {...props}
                 />
             </ScrollView>
-            <TouchableOpacity style={customDrawerStyles.logoutButton} onPress={handlePress}>
-                <Text style={customDrawerStyles.logoutText}>Logout</Text>
-            </TouchableOpacity>
         </SafeAreaView>
     )
 }

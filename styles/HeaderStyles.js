@@ -6,15 +6,13 @@ export const headerStyles = StyleSheet.create({
         flex: 1,
         width: Math.round(Dimensions.get('window').width),
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#222222',
+        paddingHorizontal: 15
     },
     headerTitle: {
-        fontWeight: 'bold',
-        fontSize: 20
-    },
-    menuIcon: {
-        position: 'absolute',
-        left: 16
+        fontSize: 20,
+        color: 'white'
     }
 });

@@ -2,8 +2,9 @@ import { StyleSheet } from 'react-native';
 
 
 export const customDrawerStyles = StyleSheet.create({
-    drawer: {
-        flex: 1
+    container: {
+        flex: 1,
+        backgroundColor: '#222222'
     },
     iconContainer: {
         marginTop: 30,
@@ -12,28 +13,7 @@ export const customDrawerStyles = StyleSheet.create({
     },
     drawerIcon: {
         resizeMode:'contain',
-        width: 120,
-        height: 120
+        width: 180,
+        height: 180
     },
-    titleContainer: {
-        margin: 10,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    drawerTitle: {
-        fontSize: 18,
-        fontWeight: 'bold'
-    },
-    logoutButton: {
-        backgroundColor: '#b5eba0',
-        height: 50,
-        margin: 10,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    logoutText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'dimgrey'
-    }
 });

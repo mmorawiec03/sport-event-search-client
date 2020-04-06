@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, View, Image, Button, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Button, ScrollView } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 import { cardContentStyles } from '../styles/CardContentStyles';
-import { levelImages } from '../styles/LevelImages';
+import { Entypo } from '@expo/vector-icons';
 import Card from '../shared/Card';
 
 
@@ -48,7 +48,9 @@ export default function EventDetails({ navigation }) {
                     </View>
                     <View  style={globalStyles.column1of2}>
                         <Text style={cardContentStyles.labelText}>Level</Text>
-                        <Image source={levelImages.levels[level]} />
+                        <View style={styles.row}>
+                            {[...Array(level)].map((e, i) => <Entypo name='star' color='#ffae00' size={20} key={i} />)}
+                        </View>
                     </View>
                 </View>
             </Card>
@@ -61,3 +63,11 @@ export default function EventDetails({ navigation }) {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginVertical: 2
+    },
+});

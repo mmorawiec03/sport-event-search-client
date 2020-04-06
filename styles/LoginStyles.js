@@ -4,9 +4,7 @@ import { StyleSheet } from 'react-native';
 export const loginStyles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: '#e2eddd'
     },
     iconContainer: {
         flex: 1,
@@ -16,35 +14,19 @@ export const loginStyles = StyleSheet.create({
     icon: {
         flex: 1,
         resizeMode:'contain',
-        maxHeight: 150,
-        maxWidth: 150,
+        maxWidth: 250,
         marginTop: 30
     },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        opacity: 0.8
-    },
     formContainer: {
-        padding: 20
+        paddingHorizontal: 20
     },
     input: {
-        backgroundColor: '#c8e0bd',
         height: 50,
         paddingHorizontal: 10,
         fontSize: 18,
-        color: 'dimgrey'
-    },
-    buttonContainer: {
-        backgroundColor: '#9ec58c',
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    buttonText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'dimgrey'
+        color: 'lightgrey',
+        borderBottomWidth: 1,
+        borderBottomColor: 'dimgrey'
     },
     errorText: {
         fontSize: 12,
@@ -57,12 +39,14 @@ export const loginStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#d497a3',
+        backgroundColor: '#9b0000',
         paddingHorizontal: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        opacity: 0.8,
+        borderRadius: 5
     },
     messageText: {
         fontSize: 14,
-        fontWeight: 'bold'
+        color: 'white'
     }
 });
