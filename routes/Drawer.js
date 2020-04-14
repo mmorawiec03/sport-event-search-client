@@ -12,25 +12,25 @@ const Drawer = createDrawerNavigator({
     AllEvents: {
         screen: AllEventsStack,
         navigationOptions: {
-            title: 'All Events'
+            title: 'EVENTS'
         }
     },
     MyEvents: {
         screen: MyEventsStack,
         navigationOptions: {
-            title: 'My Events'
+            title: 'MY EVENTS'
         }
     },
     MyProfile: {
         screen: MyProfileStack,
         navigationOptions: {
-            title: 'My Profile'
+            title: 'PROFILE'
         }
     },
     About: {
         screen: AboutStack,
         navigationOptions: {
-            title: 'About'
+            title: 'ABOUT'
         }
     }
 }, {

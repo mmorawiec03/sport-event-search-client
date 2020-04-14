@@ -9,7 +9,7 @@ const MyEventsStack = createStackNavigator({
         screen: MyEvents,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={navigation} title='My Events' />,
+                headerTitle: () => <Header navigation={navigation} title='MY EVENTS' />,
                 headerTitleAlign: 'center'
             }
         }

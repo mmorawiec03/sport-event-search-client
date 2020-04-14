@@ -48,5 +48,10 @@ export const loginStyles = StyleSheet.create({
     messageText: {
         fontSize: 14,
         color: 'white'
+    },
+    backButton: {
+        position: 'absolute',
+        top: 20,
+        left: 20
     }
 });

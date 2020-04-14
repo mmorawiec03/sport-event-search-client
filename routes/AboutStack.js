@@ -9,7 +9,7 @@ const AboutStack = createStackNavigator({
         screen: About,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={navigation} title='About' />,
+                headerTitle: () => <Header navigation={navigation} title='ABOUT' />,
                 headerTitleAlign: 'center'
             }
         }

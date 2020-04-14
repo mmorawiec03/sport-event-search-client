@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Text, View } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
-import { cardContentStyles } from '../styles/CardContentStyles';
 import { AuthContext } from '../contexts/AuthContext';
 import Card from '../shared/Card';
 
@@ -10,20 +9,40 @@ export default function MyProfile() {
 
     return (
         <View style={globalStyles.container}>
-            <Card>
-                <Text style={cardContentStyles.nameText}>{authData.user.fullName}</Text>
-            </Card>
-            <Card>
-                <Text style={cardContentStyles.labelText}>Email address</Text>
-                <Text style={cardContentStyles.detailsText}>{authData.user.email}</Text>
-            </Card>
-            <Card>
-                <Text style={cardContentStyles.labelText}>Phone number</Text>
-                <Text style={cardContentStyles.detailsText}>{authData.user.phoneNumber}</Text>
-            </Card>
-            <View style={cardContentStyles.center}>
-                <Text>Press any element to edit</Text>
-            </View> 
+            <View style={globalStyles.section}>
+                <Card>
+                    <View style={globalStyles.labelContainer}>
+                        <Text style={globalStyles.headerText}>{authData.user.fullName.toUpperCase()}</Text>
+                    </View>
+                </Card>
+            </View>
+            <View style={globalStyles.section}>
+                <Card>
+                    <View style={globalStyles.labelContainer}>
+                        <Text style={globalStyles.labelText}>EMAIL</Text>
+                    </View>
+                </Card>
+                <Card>
+                    <View style={globalStyles.labelContainer}>
+                        <Text style={globalStyles.paragraph}>{authData.user.email}</Text>
+                    </View>
+                </Card>
+            </View>
+            <View style={globalStyles.section}>
+                <Card>
+                    <View style={globalStyles.labelContainer}>
+                        <Text style={globalStyles.labelText}>PHONE NUMBER</Text>
+                    </View>
+                </Card>
+                <Card>
+                    <View style={globalStyles.labelContainer}>
+                        <Text style={globalStyles.paragraph}>{authData.user.phoneNumber}</Text>
+                    </View>
+                </Card>
+            </View>
+            <View style={{alignItems: 'center'}}>
+                <Text style={globalStyles.paragraph}>Press any element to edit</Text>
+            </View>
         </View>
     );
 }

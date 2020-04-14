@@ -13,7 +13,9 @@ export default function CustomDrawer(props) {
                 <DrawerItems 
                     activeTintColor={'#208484'}
                     activeBackgroundColor={'rgba(94, 94, 94, 0.2)'}
-                    inactiveTintColor={'white'}
+                    inactiveTintColor={'lightgrey'}
+                    labelStyle={customDrawerStyles.label}
+                    itemStyle={customDrawerStyles.item}
                     {...props}
                 />
             </ScrollView>

@@ -18,7 +18,7 @@ export default function EventCard({ event }) {
             <View>
                 <View style={styles.row}>
                     <Text style={globalStyles.paragraph}>{event.discipline}</Text>
-                    <FontAwesome name='circle' color={disciplineColors.colors[event.discipline]} size={24} />
+                    <FontAwesome name='circle' color={disciplineColors.colors[event.discipline]} size={24} style={globalStyles.icon} />
                 </View>
                 <View style={styles.row}>
                     {[...Array(event.level)].map((e, i) => <Entypo name='star' color='#ffae00' size={18} key={i} />)}

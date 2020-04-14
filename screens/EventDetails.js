@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, View, StyleSheet, Button, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
-import { cardContentStyles } from '../styles/CardContentStyles';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, FontAwesome } from '@expo/vector-icons';
 import Card from '../shared/Card';
+import { disciplineColors } from '../styles/DisciplineColors';
 
 
 export default function EventDetails({ navigation }) {
@@ -17,48 +17,108 @@ export default function EventDetails({ navigation }) {
     const participantsLimit = navigation.getParam('participantsLimit');
     return (
         <View style={globalStyles.container}>
-            <ScrollView>
-            <View style={cardContentStyles.center}>
-                <Text style={cardContentStyles.nameText}>{name}</Text>
-            </View>
-            <Card>
-                <Text style={cardContentStyles.detailsText}>{description}</Text>
-            </Card>
-            <Card>
-                <View style={globalStyles.row}>
-                    <View style={globalStyles.column1of3}>
-                        <Text style={cardContentStyles.labelText}>Date</Text>
-                        <Text style={cardContentStyles.detailsText}>{date}</Text>
+            <ScrollView> 
+                <View style={globalStyles.section}>
+                    <Card>
+                        <View style={globalStyles.labelContainer}>
+                            <Text style={globalStyles.headerText}>{name.toUpperCase()}</Text>
+                        </View>
+                    </Card>
+                    <Card>
+                        <View style={globalStyles.labelContainer}>
+                            <Text style={globalStyles.paragraph}>{description}</Text>
+                        </View>
+                    </Card>
+                </View>
+                <View style={globalStyles.section}>
+                    <View style={globalStyles.row}>
+                        <View style={globalStyles.column1of2}>
+                            <Card>
+                                <View style={globalStyles.labelContainer}>
+                                    <Text style={globalStyles.labelText}>DATE</Text>
+                                </View>
+                            </Card>
+                            <Card>
+                                <View style={globalStyles.labelContainer}>
+                                    <Entypo name='calendar' color='lightgrey' size={18} style={globalStyles.icon} />
+                                    <Text style={globalStyles.paragraph}>{date}</Text>
+                                </View>
+                            </Card>
+                        </View>
+                        <View style={globalStyles.column1of2}>
+                            <Card>
+                                <View style={globalStyles.labelContainer}>
+                                    <Text style={globalStyles.labelText}>TIME</Text>
+                                </View>
+                            </Card>
+                            <Card>
+                                <View style={globalStyles.labelContainer}>
+                                    <Entypo name='clock' color='lightgrey' size={18} style={globalStyles.icon} />
+                                    <Text style={globalStyles.paragraph}>{hour}</Text>
+                                </View>
+                            </Card>
+                        </View>
                     </View>
-                    <View style={globalStyles.column1of3}>
-                        <Text style={cardContentStyles.labelText}>Hour</Text>
-                        <Text style={cardContentStyles.detailsText}>{hour}</Text>
-                    </View>
-                    <View style={globalStyles.column1of3}>
-                        <Text style={cardContentStyles.labelText}>Address</Text>
-                        <Text style={cardContentStyles.detailsText}>{address}</Text>
+                    <View>
+                        <Card>
+                            <View style={globalStyles.labelContainer}>
+                                <Text style={globalStyles.labelText}>PLACE</Text>
+                            </View>
+                        </Card>
+                        <Card>
+                            <View style={globalStyles.labelContainer}>
+                                <Entypo name='location' color='lightgrey' size={18} style={globalStyles.icon} />
+                                <Text style={globalStyles.paragraph}>{address}</Text>
+                            </View>
+                        </Card>
                     </View>
                 </View>
-            </Card>
-            <Card>
-                <View style={globalStyles.row}>
-                    <View style={globalStyles.column1of2}>
-                        <Text style={cardContentStyles.labelText}>Discipline</Text>
-                        <Text style={cardContentStyles.detailsText}>{discipline}</Text>
-                    </View>
-                    <View  style={globalStyles.column1of2}>
-                        <Text style={cardContentStyles.labelText}>Level</Text>
-                        <View style={styles.row}>
-                            {[...Array(level)].map((e, i) => <Entypo name='star' color='#ffae00' size={20} key={i} />)}
+                <View style={globalStyles.section}>
+                    <View style={globalStyles.row}>
+                        <View style={globalStyles.column1of2}>
+                            <Card>
+                                <View style={globalStyles.labelContainer}>
+                                    <Text style={globalStyles.labelText}>DISCIPLINE</Text>
+                                </View>
+                            </Card>
+                            <Card>
+                                <View style={globalStyles.labelContainer}>
+                                    <Text style={globalStyles.paragraph}>{discipline}</Text>
+                                    <FontAwesome name='circle' color={disciplineColors.colors[discipline]} size={24} style={globalStyles.icon} />
+                                </View>
+                            </Card>
+                        </View>
+                        <View style={globalStyles.column1of2}>
+                            <Card>
+                                <View style={globalStyles.labelContainer}>
+                                    <Text style={globalStyles.labelText}>LEVEL</Text>
+                                </View>
+                            </Card>
+                            <Card>
+                                <View style={globalStyles.labelContainer}>
+                                    {[...Array(level)].map((e, i) => <Entypo name='star' color='#ffae00' size={23} key={i} />)}
+                                </View>
+                            </Card>
                         </View>
                     </View>
                 </View>
-            </Card>
-            <Card>
-                <Text style={cardContentStyles.labelText}>Participants limit</Text>
-                <Text style={cardContentStyles.detailsText}>{participantsLimit}</Text>
-                <Button title='Sign up' color='grey' />
-            </Card>
+                <View style={globalStyles.section}>
+                    <Card>
+                        <View style={globalStyles.labelContainer}>
+                            <Text style={globalStyles.labelText}>PARTICIPANTS LIMIT</Text>
+                        </View>
+                    </Card>
+                    <Card>
+                        <View style={globalStyles.labelContainer}>
+                            <Text style={globalStyles.paragraph}>{participantsLimit}</Text>
+                        </View>
+                    </Card>
+                    <TouchableOpacity onPress={() => console.log('join event')}>
+                        <View style={globalStyles.buttonContainer}>
+                            <Text style={globalStyles.buttonText}>JOIN</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
         </View>
     );

@@ -16,8 +16,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: 'rgba(94, 94, 94, 0.2)',
-        margin: 5,
+        margin: 2,
         padding: 20,
-        borderRadius: 15,
     }
 });

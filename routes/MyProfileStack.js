@@ -9,7 +9,7 @@ const MyProfileStack = createStackNavigator({
         screen: MyProfile,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={navigation} title='My Profile' />,
+                headerTitle: () => <Header navigation={navigation} title='PROFILE' />,
                 headerTitleAlign: 'center'
             }
         }

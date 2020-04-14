@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, Image, KeyboardAvoidingView, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import LoginForm from '../forms/LoginForm';
 import RegisterForm from '../forms/RegisterForm';
 import { globalStyles } from '../styles/GlobalStyles';
 import { loginStyles } from '../styles/LoginStyles';
+import { Entypo } from '@expo/vector-icons';
 
 
 export default function Login() {
@@ -14,16 +15,12 @@ export default function Login() {
     }
     
     const form = register ? (
-        <KeyboardAvoidingView behavior='padding' style={loginStyles.container} >
+        <View style={loginStyles.container} >
+            <Entypo name='back' color='#0c7070' size={40} style={loginStyles.backButton} onPress={handlePress} />
             <RegisterForm />
-            <View style={loginStyles.formContainer}>
-                <TouchableOpacity style={globalStyles.buttonContainer} onPress={handlePress}>
-                    <Text style={globalStyles.buttonText}>LOGIN PAGE</Text>
-                </TouchableOpacity>
-            </View>
-        </KeyboardAvoidingView>
+        </View>
     ) : (
-        <KeyboardAvoidingView behavior='padding' style={loginStyles.container} >
+        <View style={loginStyles.container} >
             <View style={loginStyles.iconContainer}>
                 <Image source={require('../assets/logo.png')} style={loginStyles.icon} />
             </View>
@@ -33,7 +30,7 @@ export default function Login() {
                     <Text style={globalStyles.buttonText}>SIGN UP</Text>
                 </TouchableOpacity>
             </View>
-        </KeyboardAvoidingView> 
+        </View> 
     );
 
     return (

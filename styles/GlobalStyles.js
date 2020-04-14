@@ -8,7 +8,7 @@ export const globalStyles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     column1of2: {
         flex: 0.5,
@@ -21,7 +21,8 @@ export const globalStyles = StyleSheet.create({
     centerContext: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 20
     },
     buttonContainer: {
         backgroundColor: '#0c7070',
@@ -43,7 +44,22 @@ export const globalStyles = StyleSheet.create({
     },
     paragraph: {
         fontSize: 16,
-        color: 'lightgrey',
-        marginRight: 5
+        color: 'lightgrey'
     },
+    labelContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    labelText: {
+        fontSize: 16,
+        color: '#208484',
+    },
+    section: {
+        margin: 5
+    },
+    icon: {
+        marginHorizontal: 5
+    }
 });

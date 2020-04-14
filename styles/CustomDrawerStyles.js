@@ -16,4 +16,13 @@ export const customDrawerStyles = StyleSheet.create({
         width: 180,
         height: 180
     },
+    label: {
+        fontSize: 18,
+        fontWeight: 'normal'
+    },
+    item: {
+        height: 70,
+        borderBottomWidth: 1,
+        borderColor: 'rgba(94, 94, 94, 0.2)'
+    }
 });

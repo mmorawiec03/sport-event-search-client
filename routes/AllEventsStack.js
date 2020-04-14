@@ -10,7 +10,7 @@ const AllEventsStack = createStackNavigator({
         screen: AllEvents,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={navigation} title='All Events' />,
+                headerTitle: () => <Header navigation={navigation} title='EVENTS' />,
                 headerTitleAlign: 'center'
             }
         }
@@ -18,7 +18,7 @@ const AllEventsStack = createStackNavigator({
     EventDetails: {
         screen: EventDetails,
         navigationOptions: {
-            title: 'Details',
+            title: 'DETAILS',
             headerStyle: {backgroundColor: '#222222'},
             headerTintColor: 'white',
             headerTitleAlign: 'center'
