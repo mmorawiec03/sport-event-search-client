@@ -13,6 +13,14 @@ export async function getEvents() {
     return await api.get('/api/events');
 }
 
+export async function getJoinedEvents(userId) {
+    return await api.get(`/api/events/joined/${userId}`);
+}
+
+export async function getOwnedEvents(userId) {
+    return await api.get(`/api/events/owned/${userId}`);
+}
+
 // for future
 export async function refreshToken(refreshToken) {
     return await api.post('/auth/refresh', {refreshToken: `Bearer ${refreshToken}`});

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, FlatList, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 import EventCard from '../shared/EventCard';
 import { getEvents } from '../api/endpoints';
+import Loading from './Loading';
 
 
 export default function AllEvents({ navigation }) {
@@ -32,16 +33,18 @@ export default function AllEvents({ navigation }) {
 
 
   const eventsList = loading ? (
-    <View style={globalStyles.centerContext}>
-      <ActivityIndicator size="large" color='black' />
-    </View>
+    <Loading />
   ) : (
     <FlatList
       data={events}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => {navigation.navigate('EventDetails', item)}}>
-          <EventCard event={item} />
-        </TouchableOpacity>
+        item.participantsLimit > item.participants.length ? (
+          <TouchableOpacity onPress={() => {navigation.navigate('EventDetails', item)}}>
+            <EventCard event={item} />
+          </TouchableOpacity>
+        ) : (
+          null
+        )
       )}
       keyExtractor={(item) => item._id}
       refreshing={refreshing}

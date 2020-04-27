@@ -15,6 +15,9 @@ export default function EventDetails({ navigation }) {
     const discipline = navigation.getParam('discipline');
     const level = navigation.getParam('level');
     const participantsLimit = navigation.getParam('participantsLimit');
+    const participants = navigation.getParam('participants');
+    const placesLeft = participantsLimit - participants.length;
+    const owner = navigation.getParam('owner');
     return (
         <View style={globalStyles.container}>
             <ScrollView> 
@@ -105,19 +108,45 @@ export default function EventDetails({ navigation }) {
                 <View style={globalStyles.section}>
                     <Card>
                         <View style={globalStyles.labelContainer}>
-                            <Text style={globalStyles.labelText}>PARTICIPANTS LIMIT</Text>
+                            <Text style={globalStyles.labelText}>OWNER</Text>
                         </View>
                     </Card>
                     <Card>
                         <View style={globalStyles.labelContainer}>
-                            <Text style={globalStyles.paragraph}>{participantsLimit}</Text>
+                            <Text style={globalStyles.paragraph}>{owner.fullName}</Text>
                         </View>
                     </Card>
-                    <TouchableOpacity onPress={() => console.log('join event')}>
-                        <View style={globalStyles.buttonContainer}>
-                            <Text style={globalStyles.buttonText}>JOIN</Text>
+                    <Card>
+                        <View style={globalStyles.labelContainer}>
+                            <Text style={globalStyles.paragraph}>{owner.email}</Text>
                         </View>
-                    </TouchableOpacity>
+                    </Card>
+                    {owner.phoneNumber && 
+                        <Card>
+                            <View style={globalStyles.labelContainer}>
+                                <Text style={globalStyles.paragraph}>{owner.phoneNumber}</Text>
+                            </View>
+                        </Card>
+                    }
+                </View>
+                <View style={globalStyles.section}>
+                    <Card>
+                        <View style={globalStyles.labelContainer}>
+                            <Text style={globalStyles.labelText}>PLACES LEFT</Text>
+                        </View>
+                    </Card>
+                    <Card>
+                        <View style={globalStyles.labelContainer}>
+                            <Text style={globalStyles.paragraph}>{placesLeft > 0 ? placesLeft : "No places left!"}</Text>
+                        </View>
+                    </Card>
+                    {placesLeft > 0 && 
+                        <TouchableOpacity onPress={() => console.log('join event')}>
+                            <View style={globalStyles.buttonContainer}>
+                                <Text style={globalStyles.buttonText}>JOIN</Text>
+                            </View>
+                        </TouchableOpacity>
+                    }
                 </View>
             </ScrollView>
         </View>
