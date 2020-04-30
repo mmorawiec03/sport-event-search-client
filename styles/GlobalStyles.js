@@ -21,8 +21,7 @@ export const globalStyles = StyleSheet.create({
     centerContext: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20
+        alignItems: 'center'
     },
     buttonContainer: {
         backgroundColor: '#0c7070',

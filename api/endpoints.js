@@ -21,6 +21,18 @@ export async function getOwnedEvents(userId) {
     return await api.get(`/api/events/owned/${userId}`);
 }
 
+export async function joinEvent(eventId, user) {
+    return await api.put(`/api/events/join/${eventId}`, user );
+}
+
+export async function leaveEvent(eventId, user) {
+    return await api.put(`/api/events/leave/${eventId}`, user);
+}
+
+export async function deleteEvent(eventId) {
+    return await api.delete(`/api/events/${eventId}`);
+}
+
 // for future
 export async function refreshToken(refreshToken) {
     return await api.post('/auth/refresh', {refreshToken: `Bearer ${refreshToken}`});

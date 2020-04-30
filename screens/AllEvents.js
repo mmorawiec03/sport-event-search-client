@@ -39,7 +39,7 @@ export default function AllEvents({ navigation }) {
       data={events}
       renderItem={({ item }) => (
         item.participantsLimit > item.participants.length ? (
-          <TouchableOpacity onPress={() => {navigation.navigate('EventDetails', item)}}>
+          <TouchableOpacity onPress={() => {navigation.navigate('EventDetails', { item, joined: false, owned: false })}}>
             <EventCard event={item} />
           </TouchableOpacity>
         ) : (
