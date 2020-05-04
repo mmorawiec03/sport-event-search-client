@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 import { disciplineColors } from '../styles/DisciplineColors';
 import Card from './Card'
 import { Entypo, FontAwesome } from '@expo/vector-icons';
 
-//<Image source={levelImages.levels[event.level]} />
 
 export default function EventCard({ event }) {
     return (

@@ -33,6 +33,10 @@ export async function deleteEvent(eventId) {
     return await api.delete(`/api/events/${eventId}`);
 }
 
+export async function addEvent(event) {
+    return await api.post('/api/events', event);
+}
+
 // for future
 export async function refreshToken(refreshToken) {
     return await api.post('/auth/refresh', {refreshToken: `Bearer ${refreshToken}`});

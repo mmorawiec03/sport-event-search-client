@@ -53,5 +53,10 @@ export const loginStyles = StyleSheet.create({
         position: 'absolute',
         top: 20,
         left: 20
+    },
+    pickerContainer: {
+        borderBottomWidth: 1,
+        borderBottomColor: 'dimgrey',
+        marginBottom: 10
     }
 });
