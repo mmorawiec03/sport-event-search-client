@@ -13,7 +13,7 @@ export const disciplineColors = {
         'Golf': 'aqua',
         'Hockey': 'skyblue',
         'Squash': 'salmon',
-        'Snow sports': 'whitesmoke',
+        'Winter sports': 'whitesmoke',
         'Other': 'yellowgreen'
     }
 };

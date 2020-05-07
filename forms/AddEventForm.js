@@ -6,6 +6,8 @@ import { AuthContext } from '../contexts/AuthContext';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { addEvent } from '../api/endpoints';
+import { disciplines } from '../shared/DisciplinesList';
+
 
 const addEventSchema = yup.object({
     name: yup
@@ -157,21 +159,9 @@ export default function AddEventForm({ closeModal }) {
                                     selectedValue={formikProps.values.discipline}
                                     onValueChange={formikProps.handleChange('discipline')} 
                                 >
-                                    <Picker.Item label="Football" value="Football" />
-                                    <Picker.Item label="Volleyball" value="Volleyball" />
-                                    <Picker.Item label="Basketball" value="Basketball" />
-                                    <Picker.Item label="Handball" value="Handball" />
-                                    <Picker.Item label="Running" value="Running" />
-                                    <Picker.Item label="Cycling" value="Cycling" />
-                                    <Picker.Item label="Fitness" value="Fitness" />
-                                    <Picker.Item label="Tennis" value="Tennis" />
-                                    <Picker.Item label="Climbing" value="Climbing" />
-                                    <Picker.Item label="Boxing" value="Boxing" />
-                                    <Picker.Item label="Golf" value="Golf" />
-                                    <Picker.Item label="Hockey" value="Hockey" />
-                                    <Picker.Item label="Squash" value="Squash" />
-                                    <Picker.Item label="Snow sports" value="Snow sports" />
-                                    <Picker.Item label="Other" value="Other" />
+                                    { disciplines.map(discipline => {
+                                        return <Picker.Item label={discipline} value={discipline} key={discipline} />
+                                    }) }
                                 </Picker>
                                 <Text style={loginStyles.errorText}>{formikProps.touched.discipline && formikProps.errors.discipline}</Text>
                             </View>

@@ -3,11 +3,12 @@ import { View, FlatList, TouchableOpacity, Text } from 'react-native';
 import { globalStyles } from '../styles/GlobalStyles';
 import EventCard from '../shared/EventCard';
 import Card from '../shared/Card';
-import { getEvents } from '../api/endpoints';
+import { getEvents, getEventsByDiscipline } from '../api/endpoints';
 import Loading from './Loading';
 import { MaterialIcons } from '@expo/vector-icons';
 import AppModal from './AppModal';
 import AddEventForm from '../forms/AddEventForm';
+import SearchByDiscipline from './SearchByDiscipline';
 
 
 export default function AllEvents({ navigation }) {
@@ -19,19 +20,32 @@ export default function AllEvents({ navigation }) {
   const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
-    getEventsFromServer();
+    getAllEvents();
   }, [refreshing]);
 
   const handleRefresh = () => {
     setRefreshing(true);
   }
 
-  const getEventsFromServer = () => {
-    return getEvents().then(response => {
-      setEvents(response.data);
+  const getAllEvents = () => {
+    return getEvents().then(res => {
+      setEvents(res.data);
       setLoading(false);
       setRefreshing(false);
-    }).catch(error => {
+      setSearchOpen(false);
+    }).catch(err => {
+      setLoading(false);
+      setRefreshing(false);
+    });
+  }
+
+  const getByDiscipline = (discipline) => {
+    return getEventsByDiscipline(discipline).then(res => {
+      setEvents(res.data);
+      setLoading(false);
+      setRefreshing(false);
+      setSearchOpen(false);
+    }).catch(err => {
       setLoading(false);
       setRefreshing(false);
     });
@@ -46,7 +60,7 @@ export default function AllEvents({ navigation }) {
         <>
           <TouchableOpacity onPress={() => setSearchOpen(true)}>
             <Card>
-              <Text style={globalStyles.headerText}>CATEGORIES</Text>
+              <Text style={globalStyles.headerText}>SEARCH BY DISCIPLINE</Text>
               <MaterialIcons name='search' size={32} color='lightgrey' />
             </Card>
           </TouchableOpacity>
@@ -78,7 +92,7 @@ export default function AllEvents({ navigation }) {
     <View style={globalStyles.container}>
 
       <AppModal modalOpen={searchOpen} closeModal={() => setSearchOpen(false)} >
-        <Text style={globalStyles.headerText}>search open</Text>
+        <SearchByDiscipline getByDiscipline={getByDiscipline} getAll={getAllEvents} />
       </AppModal>
 
       <AppModal modalOpen={addEventOpen} closeModal={() => setAddEventOpen(false)} >

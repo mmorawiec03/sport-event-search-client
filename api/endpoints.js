@@ -37,6 +37,10 @@ export async function addEvent(event) {
     return await api.post('/api/events', event);
 }
 
+export async function getEventsByDiscipline(discipline) {
+    return await api.get(`/api/events/${discipline}`);
+}
+
 // for future
 export async function refreshToken(refreshToken) {
     return await api.post('/auth/refresh', {refreshToken: `Bearer ${refreshToken}`});
