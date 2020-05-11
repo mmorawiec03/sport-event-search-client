@@ -40,9 +40,6 @@ export default function MyProfile() {
                     </View>
                 </Card>
             </View>
-            <View style={{alignItems: 'center'}}>
-                <Text style={globalStyles.paragraph}>Press any element to edit</Text>
-            </View>
         </View>
     );
 }

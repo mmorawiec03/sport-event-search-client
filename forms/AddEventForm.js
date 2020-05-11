@@ -44,7 +44,7 @@ const addEventSchema = yup.object({
 });
 
 
-export default function AddEventForm({ closeModal }) {
+export default function AddEventForm({ closeModal, getAllEvents }) {
 
     const { authData } = useContext(AuthContext);
     const [showMessage, setShowMessage] = useState(false);
@@ -64,6 +64,7 @@ export default function AddEventForm({ closeModal }) {
         addEvent(event).then(res => {
             actions.resetForm();
             if (res.status === 200) {
+                getAllEvents();
                 closeModal();
             }
         }).catch(err => {

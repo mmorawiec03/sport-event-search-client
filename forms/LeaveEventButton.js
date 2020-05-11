@@ -16,7 +16,19 @@ export default function LeaveEventButton({ navigation, eventId, getEvents }) {
         phoneNumber: authData.user.phoneNumber
     }
 
-    const handlePress = () => {
+    const leaveEventAlert = () => {
+        Alert.alert(
+            'Leave event',
+            'Are you sure you want to leave the event?',
+            [
+                {text: 'Leave', onPress: handleLeave},
+                {text: 'Cancel', style: 'cancel'}
+            ],
+            {cancelable: true}
+        )
+    }
+
+    const handleLeave = () => {
         leaveEvent(eventId, user).then(res => {
             if (res.status == 200) {
                 Alert.alert('Success', res.data.message);
@@ -30,7 +42,7 @@ export default function LeaveEventButton({ navigation, eventId, getEvents }) {
     }
 
     return (
-        <TouchableOpacity onPress={handlePress}>
+        <TouchableOpacity onPress={leaveEventAlert}>
             <View style={globalStyles.buttonContainer}>
                 <Text style={globalStyles.buttonText}>LEAVE</Text>
             </View>

@@ -132,7 +132,7 @@ export default function EventDetails({ navigation }) {
                     <Label>
                         <Text style={globalStyles.paragraph}>{placesLeft > 0 ? placesLeft : "No places left!"}</Text>
                     </Label>
-                    { (placesLeft > 0 && !joined && !owned) && <JoinEventButton eventId={event._id} /> }
+                    { (placesLeft > 0 && !joined && !owned) && <JoinEventButton navigation={navigation} eventId={event._id} /> }
                     { joined && <LeaveEventButton navigation={navigation} eventId={event._id} getEvents={getEvents} /> }
                     { owned && <DeleteEventButton navigation={navigation} eventId={event._id} getEvents={getEvents} /> }
                 </View>

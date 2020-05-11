@@ -6,7 +6,19 @@ import { deleteEvent } from '../api/endpoints';
 
 export default function DeleteEventButton({ navigation, eventId, getEvents }) {
 
-    const handlePress = () => {
+    const deleteEventAlert = () => {
+        Alert.alert(
+            'Delete event',
+            'Are you sure you want to delete the event?',
+            [
+                {text: 'Delete', onPress: handleDelete},
+                {text: 'Cancel', style: 'cancel'}
+            ],
+            {cancelable: true}
+        )
+    }
+
+    const handleDelete = () => {
         deleteEvent(eventId).then(res => {
             if (res.status == 200) {
                 Alert.alert('Success', res.data.message);
@@ -19,7 +31,7 @@ export default function DeleteEventButton({ navigation, eventId, getEvents }) {
     }
 
     return (
-        <TouchableOpacity onPress={handlePress}>
+        <TouchableOpacity onPress={deleteEventAlert}>
             <View style={globalStyles.buttonContainer}>
                 <Text style={globalStyles.buttonText}>DELETE</Text>
             </View>

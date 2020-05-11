@@ -5,7 +5,7 @@ import { joinEvent } from '../api/endpoints';
 import { AuthContext } from '../contexts/AuthContext';
 
 
-export default function JoinEventButton({ eventId, getUserEvents }) {
+export default function JoinEventButton({ navigation, eventId }) {
 
     const { authData } = useContext(AuthContext);
 
@@ -18,9 +18,11 @@ export default function JoinEventButton({ eventId, getUserEvents }) {
 
     const handlePress = () => {
         joinEvent(eventId, user).then(res => {
-            if (res.status == 200)
+            if (res.status == 200) {
                 Alert.alert('Success', res.data.message);
-            else
+                navigation.goBack();
+                navigation.navigate('MyEvents');
+            } else
                 Alert.alert('Error', res.data.message);
         }).catch(err => {
             Alert.alert('Error', err.response.data.message);

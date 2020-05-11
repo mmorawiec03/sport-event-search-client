@@ -96,7 +96,7 @@ export default function AllEvents({ navigation }) {
       </AppModal>
 
       <AppModal modalOpen={addEventOpen} closeModal={() => setAddEventOpen(false)} >
-        <AddEventForm />
+        <AddEventForm getAllEvents={getAllEvents} />
       </AppModal>
 
       { eventsList }
