@@ -6,6 +6,9 @@ import { globalStyles } from '../styles/GlobalStyles';
 import { loginStyles } from '../styles/LoginStyles';
 import { AuthContext } from '../contexts/AuthContext';
 import { login } from '../api/endpoints';
+import { setTokens } from '../storage/Token';
+import { setUserData } from '../storage/UserData';
+
 
 const loginSchema = yup.object({
     email: yup
@@ -25,7 +28,11 @@ export default function LoginForm() {
     const signIn = (email, password) => {
         login(email, password).then(res => {
             if (res.status === 200) {
-                dispatch({type: 'LOGIN', user: res.data});
+                setTokens(res.data.tokens).then(() => {
+                    setUserData(res.data.user).then(() => {
+                        dispatch({type: 'LOGIN', user: res.data.user});
+                    });
+                });
             }
         }).catch(err => {
             if (err.response) {

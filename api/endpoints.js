@@ -1,4 +1,4 @@
-import { api, authHeader } from './apiHost';
+import { api, getAuthHeader } from './apiHost';
 
 
 export async function login(login, password) {
@@ -9,8 +9,12 @@ export async function register(data) {
     return await api.post('/auth/register', data);
 }
 
-export async function getEvents() {
-    return await api.get('/api/events');
+export function getEvents() {
+    return new Promise(resolve => {
+        getAuthHeader().then(authHeader => {
+            resolve(api.get('/api/events', { headers: authHeader}));
+        });
+    });
 }
 
 export async function getJoinedEvents(userId) {

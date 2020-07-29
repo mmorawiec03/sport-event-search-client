@@ -1,8 +1,8 @@
 import * as Axios from 'axios';
-import { getAccessToken } from '../store/Token';
+import { getAccessToken } from '../storage/Token';
 
 
-const apiHost = 'http://192.168.0.108:3000';
+const apiHost = 'http://192.168.0.59:3000';
 
 export const api = Axios.create({
     baseURL: apiHost,
@@ -12,9 +12,12 @@ export const api = Axios.create({
     }
 });
 
-// for future
-export const authHeader = () => {
-    return {
-        Authorization: `Bearer ${getAccessToken()}`
-    }
+export const getAuthHeader = () => {
+    return new Promise(resolve => {
+        getAccessToken().then(token => {
+            resolve({
+                Authorization: `Bearer ${token}`
+            })
+        });
+    });
 }

@@ -28,6 +28,7 @@ export default function AllEvents({ navigation }) {
   }
 
   const getAllEvents = () => {
+    
     return getEvents().then(res => {
       setEvents(res.data);
       setLoading(false);
