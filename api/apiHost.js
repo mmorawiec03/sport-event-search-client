@@ -12,12 +12,17 @@ export const api = Axios.create({
     }
 });
 
-export const getAuthHeader = () => {
+export const prepareHeaders = (token) => {
+    return { 
+        headers: { Authorization: `Bearer ${token}`}
+    }
+}
+
+export const sendRequest = (callback) => {
     return new Promise(resolve => {
-        getAccessToken().then(token => {
-            resolve({
-                Authorization: `Bearer ${token}`
-            })
+        getAccessToken().then(accessToken => {
+            if (typeof callback == "function")
+                resolve(callback(prepareHeaders(accessToken)));
         });
     });
 }

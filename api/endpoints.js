@@ -1,4 +1,4 @@
-import { api, getAuthHeader } from './apiHost';
+import { api, sendRequest } from './apiHost';
 
 
 export async function login(login, password) {
@@ -10,42 +10,37 @@ export async function register(data) {
 }
 
 export function getEvents() {
-    return new Promise(resolve => {
-        getAuthHeader().then(authHeader => {
-            resolve(api.get('/api/events', { headers: authHeader}));
-        });
-    });
+    return sendRequest(headers => api.get('/api/events', headers));
 }
 
-export async function getJoinedEvents(userId) {
-    return await api.get(`/api/events/joined/${userId}`);
+export function getJoinedEvents(userId) {
+    return sendRequest(headers => api.get(`/api/events/joined/${userId}`, headers));
 }
 
-export async function getOwnedEvents(userId) {
-    return await api.get(`/api/events/owned/${userId}`);
+export function getOwnedEvents(userId) {
+    return sendRequest(headers => api.get(`/api/events/owned/${userId}`, headers));
 }
 
-export async function joinEvent(eventId, user) {
-    return await api.put(`/api/events/join/${eventId}`, user );
+export function joinEvent(eventId, user) {
+    return sendRequest(headers => api.put(`/api/events/join/${eventId}`, user, headers));
 }
 
-export async function leaveEvent(eventId, user) {
-    return await api.put(`/api/events/leave/${eventId}`, user);
+export function leaveEvent(eventId, user) {
+    return sendRequest(headers => api.put(`/api/events/leave/${eventId}`, user, headers));
 }
 
-export async function deleteEvent(eventId) {
-    return await api.delete(`/api/events/${eventId}`);
+export function deleteEvent(eventId) {
+    return sendRequest(headers => api.delete(`/api/events/${eventId}`, headers));
 }
 
-export async function addEvent(event) {
-    return await api.post('/api/events', event);
+export function addEvent(event) {
+    return sendRequest(headers => api.post('/api/events', event, headers));
 }
 
-export async function getEventsByDiscipline(discipline) {
-    return await api.get(`/api/events/${discipline}`);
+export function getEventsByDiscipline(discipline) {
+    return sendRequest(headers => api.get(`/api/events/${discipline}`, headers));
 }
 
-// for future
 export async function refreshToken(refreshToken) {
     return await api.post('/auth/refresh', {refreshToken: `Bearer ${refreshToken}`});
 }
