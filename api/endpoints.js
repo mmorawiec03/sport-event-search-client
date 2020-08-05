@@ -41,6 +41,6 @@ export function getEventsByDiscipline(discipline) {
     return sendRequest(headers => api.get(`/api/events/${discipline}`, headers));
 }
 
-export async function refreshToken(refreshToken) {
+export async function refreshTokens(refreshToken) {
     return await api.post('/auth/refresh', {refreshToken: `Bearer ${refreshToken}`});
 }
