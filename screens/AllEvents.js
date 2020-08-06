@@ -49,6 +49,7 @@ export default function AllEvents({ navigation }) {
     }).catch(err => {
       setLoading(false);
       setRefreshing(false);
+      setSearchOpen(false);
     });
   }
 

@@ -4,8 +4,8 @@ import Drawer from './Drawer';
 import Login from '../screens/Login';
 import { globalStyles } from '../styles/GlobalStyles';
 import { AuthContext } from '../contexts/AuthContext';
-import { isAccessTokenValid, isRefreshTokenValid } from '../api/auth';
-import { getAccessToken, getRefreshToken, deleteTokens, setTokens } from '../storage/Token';
+import { isAccessTokenValid, isRefreshTokenValid, getTimeDiff } from '../api/auth';
+import { getRefreshToken, deleteTokens, setTokens } from '../storage/Token';
 import { getUserData, deleteUserData } from '../storage/UserData';
 import { refreshTokens } from '../api/endpoints';
 import Loading from '../screens/Loading';
@@ -15,16 +15,28 @@ export default function AuthNavigator() {
 
     const { authData, dispatch } = useContext(AuthContext);
     const [loading, setLoading] = useState(true);
+    const [refreshIntervalMs, setRefreshIntervalMs] = useState(10000);
+    const [timeDiffThresholdMs, setTimeDiffThresholdMs] = useState(20000);
 
     useEffect(() => {
         authInit();
-        // startRefreshTask();
     }, []);
 
-    const startRefreshTask = () => {
-        // TODO
-        
-    }
+    let i = setInterval(() => {
+        if (authData.isAuth) {
+            getTimeDiff().then(diff => {
+                if (diff && diff <= timeDiffThresholdMs) {
+                    getRefreshToken().then(token => {
+                        return refreshTokens(token);
+                    }).then(res => {
+                        return setTokens(res.data);
+                    }).then(() => {
+                        console.log("[INFO] Tokens refreshed.")
+                    });
+                } 
+            });
+        }
+    }, refreshIntervalMs);
 
     const authInit = () => {
         isAccessTokenValid().then(accessTokenValid => {
