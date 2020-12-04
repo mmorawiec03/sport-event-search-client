@@ -21,8 +21,8 @@ const registerSchema = yup.object({
     password: yup
         .string()
         .required('This is a required field')
-        .test('valid-password', 'Must be minimum 8 characters, at least one uppercase, one lowercase, one number and one special character', val => {
-            const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        .test('valid-password', 'Must be minimum 8 characters, at least one uppercase, one lowercase, one number and one special character (of the following: @$!%*?&#()_)', val => {
+            const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#()_])[A-Za-z\d@$!%*?&#()_]{8,}$/;
             return password.test(val);
         })
 });
