@@ -1,10 +1,10 @@
 # Sport Event Search
 
-Mobile application that allows to find partners for sports activities.
+A mobile application that allows finding partners for sports activities.
 The project was implemented as a part of my Bachelor Thesis. The
 topic the thesis is "Authentication process security based on the mobile application for sport activity events organization".
 
-The source code of the server-side part is available [here](https://github.com/mmorawiec03/sport-event-search-server).
+The source code of the backend is available [here](https://github.com/mmorawiec03/sport-event-search-server).
 
 ## Features
 - creating events
@@ -21,12 +21,12 @@ The source code of the server-side part is available [here](https://github.com/m
 ## Screenshots
 ### Login screen
 ![Login screen](./screenshots/1_login-screen.png)
-### Main screen
-![Login screen](./screenshots/2_events-screen.png)
+### Home screen
+![Home screen](./screenshots/2_events-screen.png)
 ### Event details
-![Login screen](./screenshots/3_event-details.png)
+![Event details screen](./screenshots/3_event-details.png)
 ### My events
-![Login screen](./screenshots/4_my-events.png)
+![My events screen](./screenshots/4_my-events.png)
 
 
 
